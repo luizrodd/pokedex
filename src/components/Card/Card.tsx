@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 interface Card {
   front_default: string;
   name: string;
@@ -7,6 +8,7 @@ interface Card {
   statsAttackName: string;
   statsHpNumber: string;
   statsAttackNumber: string;
+  id: number;
 }
 const Card = ({
   statsAttackNumber,
@@ -16,9 +18,10 @@ const Card = ({
   front_default,
   name,
   typeName,
+  id
 }: Card) => {
   return (
-    <div className={`border border-gray-300 rounded-lg p-4 w-64`}>
+    <div className={`border border-gray-300 rounded-lg p-4 w-64 m-10`}>
       <img
         src={front_default}
         alt={name}
@@ -35,7 +38,7 @@ const Card = ({
         }`}
       />
       <div className="text-center mt-2">
-        <h2 className="text-xl font-semibold">{name}</h2>
+        <h2 className="text-xl font-semibold"><Link to={`/pokedex/pokemon/${id}`}>{name}</Link></h2>
         <p className="text-gray-600">{typeName}</p>
       </div>
       <div className="flex justify-between mt-4">
